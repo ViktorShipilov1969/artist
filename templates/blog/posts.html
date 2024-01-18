@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Блог{% endblock %}
+
+{% block content %}
+
+{% for post in page_obj %}
+<article class="post">
+    <header class="post-header">
+        <div class="title">
+            <h2><a href={% url 'blog:post_detail' post.pk %}>{{ post.title }}</a></h2>
+            <p>{{ post.subtitle }}</p>
+        </div>
+        <div class="card">
+            <img src="{{ post.cover.url }}" class="card-img-top img-fluid fixed-size" alt="{{ post.title }}">
+        </div>
+        <div class="meta">
+            <time class="published">{{ post.pub_date }}</time>
+        </div>
+    </header>
+    <p>{{ post.text|slice:":200" }}</p>
+    <div class="actions" style="margin-top: 10px;">
+        <a href="{% url 'blog:post_detail' post.pk %}" target="_blank" class="btn custom-button">Подробнее...</a>
+    </div>
+</article>
+{% endfor %}
+
+{% endblock content %}

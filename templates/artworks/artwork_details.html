@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ artwork.title }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+      <div class="col">
+         <div class="card">
+          <img src="{{ artwork.image.url }}" class="card-img-top" alt={{ artwork.title }}>
+            <div class="card-body">
+              <h5 class="card-title">{{ artwork.title }}</h5>
+              <p class="card-text">
+                {{ artwork.description }}
+               <p> Дата завершения: {{ artwork.completion_date }} </p>
+               <p> Статус: {% ifequal artwork.status 'sl' %} 
+                            В продаже
+                            {% endifequal %}
+                            {% ifequal artwork.status 'sd' %}
+                            Продано
+                            {% else %}
+                            Не продаётся
+                            {% endifequal %}
+               </p>
+               <p> Цена: {{ artwork.price }} руб. </p>
+            </div>
+          </div>
+      </div>
+</div>
+{% endblock content %}

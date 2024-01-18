@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ video.title }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ video.title }}</h5>
+                {{ video.link_code|safe }}
+                <p class="card-text">{{ video.description }}</p>
+                <a href={{video.link_youtube}} target="_blank" class="btn custom-button">Перейти к обсуждению на YouTube</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

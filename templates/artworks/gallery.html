@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Галерея{% endblock %}
+
+{% block content %}
+
+<div class="container my-5">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+    {% for artwork in page_obj %}
+      <div class="col custom-col">
+        <div class="card d-flex flex-fill h-100">
+          <img src="{{ artwork.image.url }}" class="card-img-top img-fluid" alt="{{ artwork.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ artwork.title }}</h5>
+            <p class="card-text">{{ artwork.description }}</p>
+            <a href="{% url 'artworks:artwork_details' artwork.pk %}" target="_blank" class="btn custom-button">Подробнее...</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% include 'artworks/includes/paginator.html' %}
+
+{% endblock %}

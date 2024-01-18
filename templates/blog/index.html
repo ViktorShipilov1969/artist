@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Художник Виктор Шипилов{% endblock %}
+
+{% block content %}
+
+<div class="container text-center my-5">
+    <div class="row">
+      <div class="col-lg-6 col md-8 mx-auto">
+        <img class="rounded-img" src={% static 'img/photo.jpg' %} alt="Виктор" />
+        <h1 class="fm-ligft">Виктор Шипилов</h1>
+        <p style="text-indent:30px">
+          Здравствуйте, уважаемые друзья!
+        </p>
+          <p style="text-indent:30px">
+Я Художник Виктор Шипилов. Художник с большой буквы, ну это моё личное мнение)
+У меня и справка есть)
+        </p>
+        <p style="text-indent:20px">Почему я решил сделать этот сайт?
+          Потому что панты, дорогие друзья, дороже денег.) Спросит меня кто нибудь - " Ты кто вообще", 
+          а я ему  - "вот уважаемый посмотрите", а он " ААААА, ООООО, да ладно!",))).</p>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

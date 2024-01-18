@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Пост {{ post.title }}{% endblock %}
+
+{% block content %}
+<article class="post">
+    <header class="post-header">
+        <div class="title">
+            <h2><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h2>
+            <p>{{ post.subtitle }}</p>
+        </div>
+        <div class="card">
+            <img src="{{ post.cover.url }}" class="card-img-top img-fluid fixed-size" alt="{{ post.title }}">
+        </div>
+        <div class="meta">
+            <time class="published">{{ post.pub_date }}</time>
+        </div>
+    </header>
+    <p>{{ post.text }}</p>
+    <div class="card-body">
+        {% if new_comment %}
+            <h3>Оставьте комментарий</h3>
+            <form method="post" style="margin-top: 1.3em;">
+                {{ comment_form.as_p }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary btn-lg">Отправить</button>
+            </form>
+        {% endif %}
+    </div>
+</article>
+
+{% for comment in comments %}
+    <div class="comments">
+        <p class="font-weight-bold">
+            {{ comment.author }}
+            <span class="text-muted font-weight-normal">
+                {{ comment.pub_date|date:"F d, Y H:i" }}
+            </span>
+        </p>
+        {{ comment.text | linebreaks }}
+    </div>
+{% endfor %}
+{% endblock content %}

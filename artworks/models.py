@@ -35,6 +35,7 @@ class Artwork(models.Model):
         help_text='Выбрать статус картины.'
     )
     price = models.IntegerField(
+        null=True,
         verbose_name='Цена',
         help_text='Введите цену картины.'
     )
